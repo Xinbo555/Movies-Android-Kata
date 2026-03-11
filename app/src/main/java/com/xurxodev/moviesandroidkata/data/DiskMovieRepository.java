@@ -7,6 +7,8 @@ import com.xurxodev.moviesandroidkata.domain.model.Movie;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class DiskMovieRepository implements MovieRepository {
     private final String jsonString;
 

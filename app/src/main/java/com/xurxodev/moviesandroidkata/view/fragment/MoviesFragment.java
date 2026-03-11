@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class MoviesFragment extends Fragment {
     private MoviesAdapter adapter;
     private RecyclerView recyclerView;
@@ -25,7 +27,8 @@ public class MoviesFragment extends Fragment {
     private TextView moviesCountTextView;
     private ImageButton refreshButton;
 
-    private GetMoviesUseCase getMoviesUseCase;
+    @Inject
+    GetMoviesUseCase getMoviesUseCase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
