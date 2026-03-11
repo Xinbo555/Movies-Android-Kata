@@ -7,16 +7,17 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;import androidx.recyclerview.widget.RecyclerView;import com.xurxodev.moviesandroidkata.R;
-import com.xurxodev.moviesandroidkata.data.DiskMovieRepository;
-import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
+import androidx.fragment.app.Fragment;import androidx.recyclerview.widget.RecyclerView;
+
+import com.xurxodev.moviesandroidkata.MyApp;
+import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 import com.xurxodev.moviesandroidkata.domain.usecase.GetMoviesUseCase;
 import com.xurxodev.moviesandroidkata.view.adapter.MoviesAdapter;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class MoviesFragment extends Fragment {
     private MoviesAdapter adapter;
@@ -25,15 +26,15 @@ public class MoviesFragment extends Fragment {
     private TextView moviesCountTextView;
     private ImageButton refreshButton;
 
-    private GetMoviesUseCase getMoviesUseCase;
+    @Inject
+    GetMoviesUseCase getMoviesUseCase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_movies, container, false);
 
-        MovieRepository repository = new DiskMovieRepository(readMoviesJson());
-        getMoviesUseCase = new GetMoviesUseCase(repository);
+        ((MyApp)getActivity().getApplication()).getAppComponent().inject(this);
 
         initializeTitle();
         initializeRefreshButton();
@@ -91,17 +92,5 @@ public class MoviesFragment extends Fragment {
         String countText = getString(R.string.movies_count_text);
 
         moviesCountTextView.setText(String.format(countText, movies.size()));
-    }
-
-    private String readMoviesJson() {
-        try {
-            InputStream inputStream = getContext().getResources().openRawResource(R.raw.movies);
-            byte[] b = new byte[inputStream.available()];
-            inputStream.read(b);
-            return new String(b);
-        } catch (IOException e){
-            //TODO manejar la excepcion
-            return "";
-        }
     }
 }

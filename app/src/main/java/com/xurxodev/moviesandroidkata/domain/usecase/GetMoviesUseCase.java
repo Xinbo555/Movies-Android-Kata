@@ -8,8 +8,11 @@ import com.xurxodev.moviesandroidkata.domain.model.Movie;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class GetMoviesUseCase {
     private final MovieRepository movieRepository;
+
 
     public GetMoviesUseCase(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
