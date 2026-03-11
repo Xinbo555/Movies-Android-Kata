@@ -7,9 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.squareup.picasso.Picasso;
 import com.xurxodev.moviesandroidkata.R;
-import com.xurxodev.moviesandroidkata.model.Movie;
+import com.xurxodev.moviesandroidkata.domain.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;

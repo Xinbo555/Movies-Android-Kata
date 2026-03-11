@@ -1,8 +1,5 @@
 package com.xurxodev.moviesandroidkata.view.fragment;
 
-import static com.xurxodev.moviesandroidkata.R.raw.movies;
-
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,25 +9,31 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;import androidx.recyclerview.widget.RecyclerView;import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.data.DiskMovieRepository;
-import com.xurxodev.moviesandroidkata.model.Movie;
+import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
+import com.xurxodev.moviesandroidkata.domain.model.Movie;
+import com.xurxodev.moviesandroidkata.domain.usecase.GetMoviesUseCase;
 import com.xurxodev.moviesandroidkata.view.adapter.MoviesAdapter;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class MoviesFragment extends Fragment {
-
-    private DiskMovieRepository movieRepository;
     private MoviesAdapter adapter;
     private RecyclerView recyclerView;
     private View rootView;
     private TextView moviesCountTextView;
     private ImageButton refreshButton;
 
+    private GetMoviesUseCase getMoviesUseCase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_movies, container, false);
+
+        MovieRepository repository = new DiskMovieRepository(readMoviesJson());
+        getMoviesUseCase = new GetMoviesUseCase(repository);
 
         initializeTitle();
         initializeRefreshButton();
@@ -71,21 +74,7 @@ public class MoviesFragment extends Fragment {
     private void loadMovies() {
         loadingMovies();
 
-        AsyncTask<Void,Void,List<Movie>> moviesAsyncTask = new AsyncTask<Void, Void, List<Movie>>() {
-            @Override
-            protected List<Movie> doInBackground(Void... params) {
-                movieRepository = new DiskMovieRepository(getActivity().getApplication());
-
-                return movieRepository.getMovies();
-            }
-
-            @Override
-            protected void onPostExecute(List<Movie> movies) {
-                loadedMovies(movies);
-            }
-        };
-
-        moviesAsyncTask.execute();
+        getMoviesUseCase.execute(this::loadedMovies);
     }
 
     private void loadingMovies(){
@@ -102,5 +91,17 @@ public class MoviesFragment extends Fragment {
         String countText = getString(R.string.movies_count_text);
 
         moviesCountTextView.setText(String.format(countText, movies.size()));
+    }
+
+    private String readMoviesJson() {
+        try {
+            InputStream inputStream = getContext().getResources().openRawResource(R.raw.movies);
+            byte[] b = new byte[inputStream.available()];
+            inputStream.read(b);
+            return new String(b);
+        } catch (IOException e){
+            //TODO manejar la excepcion
+            return "";
+        }
     }
 }
