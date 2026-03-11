@@ -16,7 +16,7 @@ import java.util.List;
 public class DiskMovieRepository {
     private Context applicationContext;
 
-    public DiskMovieRepository(Application applicationContext){
+    public DiskMovieRepository(Context applicationContext){
         this.applicationContext = applicationContext;
     }
 

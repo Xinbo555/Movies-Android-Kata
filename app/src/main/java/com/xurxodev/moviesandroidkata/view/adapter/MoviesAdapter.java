@@ -1,12 +1,12 @@
 package com.xurxodev.moviesandroidkata.view.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.model.Movie;
@@ -42,7 +42,7 @@ public class MoviesAdapter
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.movieItem = movies.get(position);
 
-        Picasso.with(holder.movieImageView.getContext())
+        Picasso.get()
                 .load(holder.movieItem.getImage())
                 .into(holder.movieImageView);
 

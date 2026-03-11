@@ -1,10 +1,8 @@
 package com.xurxodev.moviesandroidkata.view.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
-import com.xurxodev.moviesandroidkata.R;
+import androidx.appcompat.app.AppCompatActivity;import androidx.appcompat.widget.Toolbar;import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.view.fragment.MoviesFragment;
 
 public class MoviesActivity extends AppCompatActivity {
