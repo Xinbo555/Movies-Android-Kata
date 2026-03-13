@@ -8,18 +8,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;import androidx.recyclerview.widget.RecyclerView;import com.xurxodev.moviesandroidkata.R;
-import com.xurxodev.moviesandroidkata.data.DiskMovieRepository;
-import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 import com.xurxodev.moviesandroidkata.domain.usecase.GetMoviesUseCase;
 import com.xurxodev.moviesandroidkata.view.adapter.MoviesAdapter;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MoviesFragment extends Fragment {
     private MoviesAdapter adapter;
     private RecyclerView recyclerView;
@@ -34,9 +32,6 @@ public class MoviesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_movies, container, false);
-
-        MovieRepository repository = new DiskMovieRepository(readMoviesJson());
-        getMoviesUseCase = new GetMoviesUseCase(repository);
 
         initializeTitle();
         initializeRefreshButton();
@@ -77,7 +72,7 @@ public class MoviesFragment extends Fragment {
     private void loadMovies() {
         loadingMovies();
 
-        getMoviesUseCase.execute(this::loadedMovies);
+        getMoviesUseCase.getMovies(this::loadedMovies);
     }
 
     private void loadingMovies(){
@@ -94,17 +89,5 @@ public class MoviesFragment extends Fragment {
         String countText = getString(R.string.movies_count_text);
 
         moviesCountTextView.setText(String.format(countText, movies.size()));
-    }
-
-    private String readMoviesJson() {
-        try {
-            InputStream inputStream = getContext().getResources().openRawResource(R.raw.movies);
-            byte[] b = new byte[inputStream.available()];
-            inputStream.read(b);
-            return new String(b);
-        } catch (IOException e){
-            //TODO manejar la excepcion
-            return "";
-        }
     }
 }
