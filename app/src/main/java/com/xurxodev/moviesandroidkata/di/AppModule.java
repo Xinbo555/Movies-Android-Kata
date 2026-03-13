@@ -30,8 +30,7 @@ public class AppModule {
     @Provides
     @Singleton
     String provideMoviesJson() {
-        try {
-            InputStream inputStream = myApplication.getResources().openRawResource(R.raw.movies);
+        try (InputStream inputStream = myApplication.getResources().openRawResource(R.raw.movies)){
             byte[] b = new byte[inputStream.available()];
             inputStream.read(b);
             return new String(b);
