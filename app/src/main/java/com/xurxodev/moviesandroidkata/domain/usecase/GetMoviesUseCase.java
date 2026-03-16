@@ -21,7 +21,7 @@ public class GetMoviesUseCase {
         this.movieRepository = movieRepository;
     }
 
-    public void getMovies(Callback callback){
+    public void getMovies(Callback callback) {
         new AsyncTask<Void, Void, List<Movie>>() {
             @Override
             protected List<Movie> doInBackground(Void... params) {

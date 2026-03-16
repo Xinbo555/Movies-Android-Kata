@@ -7,10 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;import androidx.recyclerview.widget.RecyclerView;import com.xurxodev.moviesandroidkata.R;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 import com.xurxodev.moviesandroidkata.domain.usecase.GetMoviesUseCase;
 import com.xurxodev.moviesandroidkata.view.adapter.MoviesAdapter;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,7 +23,9 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class MoviesFragment extends Fragment {
-    private MoviesAdapter adapter;
+
+    @Inject
+    MoviesAdapter adapter;
     private RecyclerView recyclerView;
     private View rootView;
     private TextView moviesCountTextView;
@@ -30,12 +36,11 @@ public class MoviesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_movies, container, false);
 
         initializeTitle();
         initializeRefreshButton();
-        initializeAdapter();
         initializeRecyclerView();
 
         loadMovies();
@@ -48,7 +53,7 @@ public class MoviesFragment extends Fragment {
                 R.id.movies_title_text_view);
     }
 
-    private void initializeRefreshButton(){
+    private void initializeRefreshButton() {
         refreshButton = (ImageButton) rootView.findViewById(
                 R.id.refresh_button);
 
@@ -58,10 +63,6 @@ public class MoviesFragment extends Fragment {
                 loadMovies();
             }
         });
-    }
-
-    private void initializeAdapter() {
-        adapter = new MoviesAdapter();
     }
 
     private void initializeRecyclerView() {
@@ -75,12 +76,12 @@ public class MoviesFragment extends Fragment {
         getMoviesUseCase.getMovies(this::loadedMovies);
     }
 
-    private void loadingMovies(){
+    private void loadingMovies() {
         adapter.clearMovies();
         moviesCountTextView.setText(R.string.loading_movies_text);
     }
 
-    private void loadedMovies(List<Movie> movies){
+    private void loadedMovies(List<Movie> movies) {
         adapter.setMovies(movies);
         refreshTitleWithMoviesCount(movies);
     }

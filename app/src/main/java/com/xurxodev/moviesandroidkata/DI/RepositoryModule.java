@@ -1,6 +1,8 @@
 package com.xurxodev.moviesandroidkata.DI;
 
-import com.xurxodev.moviesandroidkata.data.DiskMovieRepository;
+import com.xurxodev.moviesandroidkata.data.datasource.MoviesLocalDataSource;
+import com.xurxodev.moviesandroidkata.data.parser.MovieParser;
+import com.xurxodev.moviesandroidkata.data.repository.DiskMovieRepository;
 import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
 
 import javax.inject.Singleton;
@@ -16,7 +18,8 @@ public class RepositoryModule {
 
     @Provides
     @Singleton
-    MovieRepository provideModuleRepository(String json) {
-        return new DiskMovieRepository(json);
+    MovieRepository provideModuleRepository(MoviesLocalDataSource dataSource, MovieParser movieParser) {
+        String json = dataSource.getMoviesJason();
+        return new DiskMovieRepository(json, movieParser);
     }
 }

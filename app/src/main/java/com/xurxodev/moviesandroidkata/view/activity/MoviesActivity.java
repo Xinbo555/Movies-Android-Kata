@@ -2,7 +2,10 @@ package com.xurxodev.moviesandroidkata.view.activity;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;import androidx.appcompat.widget.Toolbar;import com.xurxodev.moviesandroidkata.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.view.fragment.MoviesFragment;
 
 import dagger.hilt.android.AndroidEntryPoint;

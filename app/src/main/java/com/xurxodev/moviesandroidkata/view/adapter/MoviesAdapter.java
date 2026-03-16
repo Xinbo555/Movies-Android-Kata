@@ -8,18 +8,27 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
 import com.xurxodev.moviesandroidkata.R;
+import com.xurxodev.moviesandroidkata.domain.image.ImageLoader;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class MoviesAdapter
         extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 
+    public List<Movie> movies;
 
-    public List<Movie> movies = new ArrayList<>();
+    ImageLoader imageLoader;
+
+    @Inject
+    public MoviesAdapter(ImageLoader imageLoader) {
+        this.imageLoader = imageLoader;
+        this.movies = new ArrayList<>();
+    }
 
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
@@ -43,11 +52,9 @@ public class MoviesAdapter
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.movieItem = movies.get(position);
 
-        Picasso.get()
-                .load(holder.movieItem.getImage())
-                .into(holder.movieImageView);
+        imageLoader.load(holder.movieItem.getImage(), holder.movieImageView);
 
-        holder.titleTextView.setText(holder.movieItem .getTitle());
+        holder.titleTextView.setText(holder.movieItem.getTitle());
     }
 
     @Override
@@ -55,7 +62,7 @@ public class MoviesAdapter
         return movies.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public final ImageView movieImageView;
         public final TextView titleTextView;
 
