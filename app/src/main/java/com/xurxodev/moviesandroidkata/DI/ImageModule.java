@@ -1,19 +1,21 @@
 package com.xurxodev.moviesandroidkata.DI;
 
-import com.xurxodev.moviesandroidkata.data.imageloader.PicassoImageLoader;
-import com.xurxodev.moviesandroidkata.domain.image.ImageLoader;
+import com.xurxodev.moviesandroidkata.view.imageloader.GlideImageLoader;
+import com.xurxodev.moviesandroidkata.view.imageloader.PicassoImageLoader;
+import com.xurxodev.moviesandroidkata.view.imageloader.ImageLoader;
 
+import javax.inject.Singleton;
+
+import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
 
 @Module
 @InstallIn(SingletonComponent.class)
-public class ImageModule {
+public abstract class ImageModule {
 
-    @Provides
-    ImageLoader provideImageProvider() {
-        return new PicassoImageLoader();
-    }
+    @Binds
+    @Singleton
+    abstract ImageLoader bindImageProvider(GlideImageLoader impl);
 }

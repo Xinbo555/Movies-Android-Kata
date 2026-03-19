@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xurxodev.moviesandroidkata.R;
-import com.xurxodev.moviesandroidkata.domain.image.ImageLoader;
+import com.xurxodev.moviesandroidkata.view.imageloader.ImageLoader;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import javax.inject.Inject;
 public class MoviesAdapter
         extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 
-    public List<Movie> movies;
+    private List<Movie> movies;
 
     ImageLoader imageLoader;
 

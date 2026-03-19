@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.data.datasource;
+package com.xurxodev.moviesandroidkata.data.source;
 
 import android.content.Context;
 
@@ -11,16 +11,18 @@ import java.io.InputStreamReader;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.qualifiers.ApplicationContext;
+
 public class MoviesLocalDataSource {
 
     private final Context context;
 
     @Inject
-    public MoviesLocalDataSource(Context context) {
+    public MoviesLocalDataSource(@ApplicationContext Context context) {
         this.context = context;
     }
 
-    public String getMoviesJason() {
+    public String getMoviesJson() {
         InputStream is = context.getResources().openRawResource(R.raw.movies);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         StringBuilder builder = new StringBuilder();
@@ -29,7 +31,7 @@ public class MoviesLocalDataSource {
                 builder.append(br.readLine());
             }
         } catch (IOException e) {
-            System.out.println(" ");
+            throw new RuntimeException(e);
         }
         return builder.toString();
     }

@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.domain.image;
+package com.xurxodev.moviesandroidkata.view.imageloader;
 
 import android.widget.ImageView;
 

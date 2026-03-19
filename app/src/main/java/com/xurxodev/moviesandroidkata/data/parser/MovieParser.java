@@ -9,12 +9,14 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class MovieParser {
+
+    private final Gson gson;
     @Inject
-    public MovieParser() {
+    public MovieParser(Gson gson) {
+        this.gson = gson;
     }
 
     public List<Movie> fromJson(String jsonString) {
-        Gson gson = new Gson();
         Movie[] movies = gson.fromJson(jsonString, Movie[].class);
         return Arrays.asList(movies);
     }

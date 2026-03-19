@@ -1,8 +1,8 @@
 package com.xurxodev.moviesandroidkata.domain.model;
 
 public class Movie {
-    private String image;
-    private String title;
+    private final String image;
+    private final String title;
 
     public Movie(String image, String title) {
         this.image = image;

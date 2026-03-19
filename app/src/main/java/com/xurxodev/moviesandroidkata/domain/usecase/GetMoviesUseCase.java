@@ -1,7 +1,6 @@
 package com.xurxodev.moviesandroidkata.domain.usecase;
 
-import android.os.AsyncTask;
-
+import com.xurxodev.moviesandroidkata.domain.executor.AsyncExecutor;
 import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 
@@ -11,27 +10,21 @@ import javax.inject.Inject;
 
 public class GetMoviesUseCase {
     private final MovieRepository movieRepository;
-
-    public interface Callback {
-        void onResult(List<Movie> result);
-    }
-
+    private final AsyncExecutor asyncExecutor;
     @Inject
-    public GetMoviesUseCase(MovieRepository movieRepository) {
+    public GetMoviesUseCase(MovieRepository movieRepository, AsyncExecutor asyncExecutor) {
         this.movieRepository = movieRepository;
+        this.asyncExecutor = asyncExecutor;
     }
 
     public void getMovies(Callback callback) {
-        new AsyncTask<Void, Void, List<Movie>>() {
-            @Override
-            protected List<Movie> doInBackground(Void... params) {
-                return movieRepository.getMovies();
-            }
+        asyncExecutor.doInBackground(() -> {
+            List<Movie> movies = movieRepository.getMovies();
+            asyncExecutor.doOnMainThread(() -> callback.onResult(movies));
+        });
+    }
 
-            @Override
-            protected void onPostExecute(List<Movie> movies) {
-                callback.onResult(movies);
-            }
-        }.execute();
+    public interface Callback {
+        void onResult(List<Movie> result);
     }
 }

@@ -1,14 +1,20 @@
-package com.xurxodev.moviesandroidkata.data.imageloader;
+package com.xurxodev.moviesandroidkata.view.imageloader;
 
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.xurxodev.moviesandroidkata.domain.image.ImageLoader;
+
+import javax.inject.Inject;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.GrayscaleTransformation;
 
 public class GlideImageLoader implements ImageLoader {
+
+    @Inject
+    public GlideImageLoader() {
+    }
+
     @Override
     public void load(String imageUrl, ImageView imageView) {
         Glide.with(imageView.getContext())

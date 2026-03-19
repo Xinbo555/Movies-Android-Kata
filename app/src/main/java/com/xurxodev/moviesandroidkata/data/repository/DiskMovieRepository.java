@@ -1,26 +1,28 @@
 package com.xurxodev.moviesandroidkata.data.repository;
 
-import com.google.gson.Gson;
 import com.xurxodev.moviesandroidkata.data.parser.MovieParser;
+import com.xurxodev.moviesandroidkata.data.source.MoviesLocalDataSource;
 import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 
-import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class DiskMovieRepository implements MovieRepository {
-    private final String jsonString;
+    private final MoviesLocalDataSource moviesLocalDataSource;
     private final MovieParser movieParser;
 
-    public DiskMovieRepository(String jsonString, MovieParser movieParser) {
-        this.jsonString = jsonString;
+    @Inject
+    public DiskMovieRepository(MoviesLocalDataSource moviesLocalDataSource, MovieParser movieParser) {
+        this.moviesLocalDataSource = moviesLocalDataSource;
         this.movieParser = movieParser;
     }
 
     @Override
     public List<Movie> getMovies() {
         simulateDelay();
-        return movieParser.fromJson(jsonString);
+        return movieParser.fromJson(moviesLocalDataSource.getMoviesJson());
     }
 
     private void simulateDelay() {

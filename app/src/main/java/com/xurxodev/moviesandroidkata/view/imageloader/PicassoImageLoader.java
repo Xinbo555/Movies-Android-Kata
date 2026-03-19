@@ -1,11 +1,18 @@
-package com.xurxodev.moviesandroidkata.data.imageloader;
+package com.xurxodev.moviesandroidkata.view.imageloader;
 
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
-import com.xurxodev.moviesandroidkata.domain.image.ImageLoader;
+
+import javax.inject.Inject;
 
 public class PicassoImageLoader implements ImageLoader {
+
+    @Inject
+    public PicassoImageLoader() {
+    }
+
+
     @Override
     public void load(String imageUrl, ImageView imageView) {
         Picasso.get().load(imageUrl).into(imageView);
