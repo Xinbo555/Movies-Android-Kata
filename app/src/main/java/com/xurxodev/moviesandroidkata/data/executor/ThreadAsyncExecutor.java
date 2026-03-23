@@ -5,20 +5,28 @@ import android.os.Looper;
 
 import com.xurxodev.moviesandroidkata.domain.executor.AsyncExecutor;
 
+import java.util.concurrent.Executor;
+
 import javax.inject.Inject;
 
 public class ThreadAsyncExecutor implements AsyncExecutor {
+
+    private final Executor executor;
+    private final Handler mainHandler;
+
     @Inject
-    public ThreadAsyncExecutor() {
+    public ThreadAsyncExecutor(Executor executor, Handler mainHandler) {
+        this.executor = executor;
+        this.mainHandler = mainHandler;
     }
 
     @Override
     public void doInBackground(Runnable task) {
-        new Thread(task).start();
+        executor.execute(task);
     }
 
     @Override
     public void doOnMainThread(Runnable task) {
-        new Handler(Looper.getMainLooper()).post(task);
+        mainHandler.post(task);
     }
 }

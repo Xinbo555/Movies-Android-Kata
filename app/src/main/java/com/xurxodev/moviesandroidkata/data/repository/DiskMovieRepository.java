@@ -13,6 +13,7 @@ public class DiskMovieRepository implements MovieRepository {
     private final MoviesLocalDataSource moviesLocalDataSource;
     private final MovieParser movieParser;
 
+
     @Inject
     public DiskMovieRepository(MoviesLocalDataSource moviesLocalDataSource, MovieParser movieParser) {
         this.moviesLocalDataSource = moviesLocalDataSource;

@@ -1,6 +1,5 @@
 package com.xurxodev.moviesandroidkata.DI;
 
-import com.xurxodev.moviesandroidkata.view.imageloader.GlideImageLoader;
 import com.xurxodev.moviesandroidkata.view.imageloader.PicassoImageLoader;
 import com.xurxodev.moviesandroidkata.view.imageloader.ImageLoader;
 
@@ -17,5 +16,5 @@ public abstract class ImageModule {
 
     @Binds
     @Singleton
-    abstract ImageLoader bindImageProvider(GlideImageLoader impl);
+    abstract ImageLoader bindImageProvider(PicassoImageLoader impl);
 }
