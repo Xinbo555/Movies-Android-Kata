@@ -3,8 +3,6 @@ package com.xurxodev.moviesandroidkata.view.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,8 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class MoviesAdapter
-        extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
+public class MoviesAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<Movie> movies;
 
@@ -62,19 +59,5 @@ public class MoviesAdapter
     @Override
     public int getItemCount() {
         return movies.size();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public final ImageView movieImageView;
-        public final TextView titleTextView;
-
-        public Movie movieItem;
-
-        public ViewHolder(View view) {
-            super(view);
-
-            movieImageView = (ImageView) view.findViewById(R.id.item_movie_poster);
-            titleTextView = (TextView) view.findViewById(R.id.item_movie_title);
-        }
     }
 }

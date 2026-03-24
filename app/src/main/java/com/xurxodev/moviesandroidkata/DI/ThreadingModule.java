@@ -20,7 +20,7 @@ public class ThreadingModule {
     @Provides
     @Singleton
     public Executor provideThread(){
-        return Executors.newSingleThreadExecutor();
+        return Executors.newCachedThreadPool();
     }
 
     @Provides
