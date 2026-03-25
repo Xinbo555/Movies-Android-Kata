@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.view.adapter;
+package com.xurxodev.moviesandroidkata.view.movies.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,12 +20,18 @@ public class MoviesAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<Movie> movies;
 
-    ImageLoader imageLoader;
+    private final ImageLoader imageLoader;
+    private final OnMovieClickListener listener;
 
-    @Inject
-    public MoviesAdapter(ImageLoader imageLoader) {
+    public interface OnMovieClickListener {
+        void onMovieClicked(Movie movie);
+    }
+
+    public MoviesAdapter(ImageLoader imageLoader,OnMovieClickListener listener) {
         this.imageLoader = imageLoader;
+        this.listener = listener;
         this.movies = new ArrayList<>();
+
     }
 
     public void setMovies(List<Movie> movies) {
@@ -54,6 +60,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<ViewHolder> {
         imageLoader.load(holder.movieItem.getImage(), holder.movieImageView);
 
         holder.titleTextView.setText(holder.movieItem.getTitle());
+
+        holder.movieImageView.setOnClickListener(view -> listener.onMovieClicked(holder.movieItem));
     }
 
     @Override

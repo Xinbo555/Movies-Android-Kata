@@ -1,30 +1,37 @@
 [
   {
-    "image": "https://devsapihub.com/img-movies/1.jpg",
-    "title": "The Shawshank Redemption"
+    "title": "The Shawshank Redemption",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "image": "https://devsapihub.com/img-movies/1.jpg"
   },
   {
-    "image": "https://devsapihub.com/img-movies/2.jpg",
-    "title": "Jumanji"
+    "title": "Jumanji",
+    "description": "In Jumanji: The Next Level, the gang is back but the game has changed.",
+    "image": "https://devsapihub.com/img-movies/2.jpg"
   },
   {
-    "image": "https://devsapihub.com/img-movies/3.jpg",
-    "title": "The Godfather"
+    "title": "The Godfather",
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son",
+    "image": "https://devsapihub.com/img-movies/3.jpg"
   },
   {
-    "image": "https://devsapihub.com/img-movies/4.jpg",
-    "title": "The Godfather: Part II"
+    "title": "The Godfather: Part II",
+    "description": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
+    "image": "https://devsapihub.com/img-movies/4.jpg"
   },
   {
-    "image": "https://devsapihub.com/img-movies/5.jpg",
-    "title": "The Dark Knight"
+    "title": "The Dark Knight",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "image": "https://devsapihub.com/img-movies/5.jpg"
   },
   {
-    "image": "https://devsapihub.com/img-movies/6.jpg",
-    "title": "12 Angry Men"
+    "title": "12 Angry Men",
+    "description": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
+    "image": "https://devsapihub.com/img-movies/6.jpg"
   },
   {
-    "image": "https://devsapihub.com/img-movies/7.jpg",
-    "title": "No Hard Feelings"
+    "title": "No Hard Feelings",
+    "description": "On the brink of losing her home, a woman agrees to date a wealthy couple's introverted son before he leaves for college.",
+    "image": "https://devsapihub.com/img-movies/7.jpg"
   }
 ]

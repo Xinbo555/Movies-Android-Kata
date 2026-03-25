@@ -4,16 +4,18 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name=".MyApp"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.activity.MoviesActivity"
+            android:name=".view.detail.MovieDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.movies.activity.MoviesActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">

@@ -36,7 +36,7 @@
 
         app:layoutManager="GridLayoutManager"
         app:spanCount="1"
-        tools:context=".view.activity.MoviesActivity"
+        tools:context=".view.movies.activity.MoviesActivity"
         tools:listitem="@layout/item_movies"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </LinearLayout>

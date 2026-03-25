@@ -1,10 +1,10 @@
-package com.xurxodev.moviesandroidkata.view.fragment;
+package com.xurxodev.moviesandroidkata.view.movies.fragment;
 
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 
 import java.util.List;
 
-public interface FragmentView {
+public interface MoviesFragmentView {
     void startLoadMovies();
 
     void onMoviesLoaded(List<Movie> movies);

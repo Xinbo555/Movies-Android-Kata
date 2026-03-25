@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.view.fragment;
+package com.xurxodev.moviesandroidkata.view.movies.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
-import com.xurxodev.moviesandroidkata.view.adapter.MoviesAdapter;
+import com.xurxodev.moviesandroidkata.view.movies.adapter.MoviesAdapter;
 
 import java.util.List;
 
@@ -23,17 +23,16 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class MoviesFragment extends Fragment implements FragmentView{
+public class MoviesMoviesFragment extends Fragment implements MoviesFragmentView {
 
-    @Inject
-    MoviesAdapter adapter;
+    private MoviesAdapter adapter;
     private RecyclerView recyclerView;
     private View rootView;
     private TextView moviesCountTextView;
     private ImageButton refreshButton;
 
     @Inject
-    FragmentPresenter presenter;
+    MoviesFragmentPresenter presenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +42,7 @@ public class MoviesFragment extends Fragment implements FragmentView{
 
         initializeTitle();
         initializeRefreshButton();
+        initializeAdapter();
         initializeRecyclerView();
 
         presenter.setFragmentView(this);
@@ -73,6 +73,10 @@ public class MoviesFragment extends Fragment implements FragmentView{
                 R.id.refresh_button);
 
         refreshButton.setOnClickListener(view -> presenter.loadMovieList());
+    }
+
+    private void initializeAdapter() {
+        adapter = presenter.createAdapter();
     }
 
     private void initializeRecyclerView() {

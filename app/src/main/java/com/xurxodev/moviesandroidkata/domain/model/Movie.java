@@ -4,9 +4,12 @@ public class Movie {
     private final String image;
     private final String title;
 
-    public Movie(String image, String title) {
+    private final String description;
+
+    public Movie(String image, String title, String description) {
         this.image = image;
         this.title = title;
+        this.description = description;
     }
 
     public String getImage() {
@@ -15,5 +18,9 @@ public class Movie {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

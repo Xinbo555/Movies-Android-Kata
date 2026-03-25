@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.view.activity;
+package com.xurxodev.moviesandroidkata.view.movies.activity;
 
 import android.os.Bundle;
 
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.xurxodev.moviesandroidkata.R;
-import com.xurxodev.moviesandroidkata.view.fragment.MoviesFragment;
+import com.xurxodev.moviesandroidkata.view.movies.fragment.MoviesMoviesFragment;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -25,7 +25,7 @@ public class MoviesActivity extends AppCompatActivity {
     }
 
     private void showDetailFragment() {
-        MoviesFragment fragment = new MoviesFragment();
+        MoviesMoviesFragment fragment = new MoviesMoviesFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.movies_list_container, fragment)
