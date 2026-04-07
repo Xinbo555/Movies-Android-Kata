@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 import com.xurxodev.moviesandroidkata.view.imageloader.ImageLoader;
-import com.xurxodev.moviesandroidkata.view.movies.fragment.MoviesFragmentPresenter;
 
 import javax.inject.Inject;
 
@@ -36,16 +35,20 @@ public class MovieDetailActivity extends AppCompatActivity implements MovieDetai
         setContentView(R.layout.activity_movie_detail);
 
         initUI();
+        configureActionBar();
 
         presenter.setView(this);
         presenter.displayMovie(getMovieFromIntent());
     }
 
     private void initUI() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initializeTitle();
         initializeDescription();
         initializeImage();
+    }
+
+    private void configureActionBar() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initializeImage() {
@@ -78,6 +81,7 @@ public class MovieDetailActivity extends AppCompatActivity implements MovieDetai
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
             presenter.onBackPressed();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

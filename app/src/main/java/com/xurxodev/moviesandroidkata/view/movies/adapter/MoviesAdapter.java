@@ -14,8 +14,6 @@ import com.xurxodev.moviesandroidkata.domain.model.Movie;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 public class MoviesAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<Movie> movies;

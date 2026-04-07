@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xurxodev.moviesandroidkata.R;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
+import com.xurxodev.moviesandroidkata.view.imageloader.ImageLoader;
 import com.xurxodev.moviesandroidkata.view.movies.adapter.MoviesAdapter;
 
 import java.util.List;
@@ -30,6 +31,9 @@ public class MoviesMoviesFragment extends Fragment implements MoviesFragmentView
     private View rootView;
     private TextView moviesCountTextView;
     private ImageButton refreshButton;
+
+    @Inject
+    ImageLoader imageLoader;
 
     @Inject
     MoviesFragmentPresenter presenter;
@@ -76,7 +80,7 @@ public class MoviesMoviesFragment extends Fragment implements MoviesFragmentView
     }
 
     private void initializeAdapter() {
-        adapter = presenter.createAdapter();
+        adapter = new MoviesAdapter(imageLoader,movie -> presenter.onMovieClicked(movie));
     }
 
     private void initializeRecyclerView() {

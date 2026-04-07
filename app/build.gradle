@@ -40,4 +40,5 @@ dependencies {
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
     annotationProcessor "com.google.dagger:hilt-android-compiler:$hilt_version"
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
 }
