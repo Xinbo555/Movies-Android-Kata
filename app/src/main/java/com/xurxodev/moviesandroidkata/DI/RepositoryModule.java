@@ -17,7 +17,7 @@ import dagger.hilt.components.SingletonComponent;
 
 @Module
 @InstallIn(SingletonComponent.class)
-public abstract class DataModule {
+public abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract MovieRepository bindModuleRepository(DiskMovieRepository impl);

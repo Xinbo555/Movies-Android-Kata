@@ -13,7 +13,7 @@ import dagger.hilt.android.qualifiers.ActivityContext;
 
 @Module
 @InstallIn(ActivityComponent.class)
-public class RouterModule {
+public class NavigationModule {
 
     @Provides
     public MovieRouter provideMovieRouter(@ActivityContext Context context) {

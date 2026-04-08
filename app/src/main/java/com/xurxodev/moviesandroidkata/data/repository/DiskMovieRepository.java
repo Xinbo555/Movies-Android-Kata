@@ -22,15 +22,6 @@ public class DiskMovieRepository implements MovieRepository {
 
     @Override
     public List<Movie> getMovies() {
-        simulateDelay();
         return movieParser.fromJson(moviesLocalDataSource.getMoviesJson());
-    }
-
-    private void simulateDelay() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

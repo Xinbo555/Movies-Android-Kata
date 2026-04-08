@@ -5,6 +5,7 @@ import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import javax.inject.Inject;
 
@@ -17,14 +18,19 @@ public class GetMoviesUseCase {
         this.asyncExecutor = asyncExecutor;
     }
 
-    public void getMovies(Callback callback) {
+    public void getMovies(Consumer<List<Movie>> onMoviesLoaded) {
         asyncExecutor.doInBackground(() -> {
             List<Movie> movies = movieRepository.getMovies();
-            asyncExecutor.doOnMainThread(() -> callback.onResult(movies));
+            simulateDelay();
+            asyncExecutor.doOnMainThread(() -> onMoviesLoaded.accept(movies));
         });
     }
 
-    public interface Callback {
-        void onResult(List<Movie> result);
+    private void simulateDelay() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
