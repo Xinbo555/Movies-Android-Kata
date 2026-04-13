@@ -24,7 +24,7 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class MoviesMoviesFragment extends Fragment implements MoviesFragmentView {
+public class MoviesFragment extends Fragment implements MoviesFragmentView {
 
     private MoviesAdapter adapter;
     private RecyclerView recyclerView;
