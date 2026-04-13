@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.domain.executor;
+package com.xurxodev.moviesandroidkata.model.executor;
 
 public interface AsyncExecutor {
     void doInBackground(Runnable task);

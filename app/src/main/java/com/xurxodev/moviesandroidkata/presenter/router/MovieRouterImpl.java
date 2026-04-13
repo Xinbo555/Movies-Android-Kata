@@ -1,12 +1,11 @@
-package com.xurxodev.moviesandroidkata.view.router;
+package com.xurxodev.moviesandroidkata.presenter.router;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.xurxodev.moviesandroidkata.domain.model.Movie;
+import com.xurxodev.moviesandroidkata.model.data.Movie;
 import com.xurxodev.moviesandroidkata.view.detail.MovieDetailActivity;
-import com.xurxodev.moviesandroidkata.view.movies.activity.MoviesActivity;
 
 import javax.inject.Inject;
 

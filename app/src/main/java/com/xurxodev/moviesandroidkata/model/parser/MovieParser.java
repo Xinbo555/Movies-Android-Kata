@@ -1,7 +1,7 @@
-package com.xurxodev.moviesandroidkata.data.parser;
+package com.xurxodev.moviesandroidkata.model.parser;
 
 import com.google.gson.Gson;
-import com.xurxodev.moviesandroidkata.domain.model.Movie;
+import com.xurxodev.moviesandroidkata.model.data.Movie;
 
 import java.util.Arrays;
 import java.util.List;

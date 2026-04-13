@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.DI;
+package com.xurxodev.moviesandroidkata.model.DI;
 
 import com.xurxodev.moviesandroidkata.view.imageloader.PicassoImageLoader;
 import com.xurxodev.moviesandroidkata.view.imageloader.ImageLoader;

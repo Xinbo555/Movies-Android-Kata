@@ -1,28 +1,29 @@
-package com.xurxodev.moviesandroidkata.view.movies.fragment;
+package com.xurxodev.moviesandroidkata.presenter.movies;
 
-import com.xurxodev.moviesandroidkata.domain.model.Movie;
-import com.xurxodev.moviesandroidkata.domain.usecase.GetMoviesUseCase;
-import com.xurxodev.moviesandroidkata.view.router.MovieRouter;
+import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.model.service.MovieListService;
+import com.xurxodev.moviesandroidkata.view.movies.fragment.MoviesFragmentView;
+import com.xurxodev.moviesandroidkata.presenter.router.MovieRouter;
 
 import javax.inject.Inject;
 
 public class MoviesFragmentPresenter {
     private MoviesFragmentView moviesFragmentView;
-    private final GetMoviesUseCase getMoviesUseCase;
+    private final MovieListService service;
     private final MovieRouter router;
 
     @Inject
-    public MoviesFragmentPresenter(GetMoviesUseCase getMoviesUseCase, MovieRouter router) {
-        this.getMoviesUseCase = getMoviesUseCase;
+    public MoviesFragmentPresenter(MovieListService service, MovieRouter router) {
+        this.service = service;
         this.router = router;
     }
     public void setFragmentView(MoviesFragmentView view) {
         this.moviesFragmentView = view;
     }
 
-    void loadMovieList() {
+    public void loadMovieList() {
         moviesFragmentView.startLoadMovies();
-        getMoviesUseCase.getMovies(movieList -> {
+        service.getMovies(movieList -> {
             if (this.moviesFragmentView != null){
                 moviesFragmentView.onMoviesLoaded(movieList);
             }

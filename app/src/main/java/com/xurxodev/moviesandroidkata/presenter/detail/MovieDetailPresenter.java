@@ -1,7 +1,8 @@
-package com.xurxodev.moviesandroidkata.view.detail;
+package com.xurxodev.moviesandroidkata.presenter.detail;
 
-import com.xurxodev.moviesandroidkata.domain.model.Movie;
-import com.xurxodev.moviesandroidkata.view.router.MovieRouter;
+import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.view.detail.MovieDetailView;
+import com.xurxodev.moviesandroidkata.presenter.router.MovieRouter;
 
 import javax.inject.Inject;
 

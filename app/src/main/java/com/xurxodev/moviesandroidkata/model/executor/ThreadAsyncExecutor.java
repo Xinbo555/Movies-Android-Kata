@@ -1,9 +1,6 @@
-package com.xurxodev.moviesandroidkata.data.executor;
+package com.xurxodev.moviesandroidkata.model.executor;
 
 import android.os.Handler;
-import android.os.Looper;
-
-import com.xurxodev.moviesandroidkata.domain.executor.AsyncExecutor;
 
 import java.util.concurrent.Executor;
 

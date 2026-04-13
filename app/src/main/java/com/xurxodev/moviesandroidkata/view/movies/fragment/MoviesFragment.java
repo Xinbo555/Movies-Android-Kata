@@ -13,7 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xurxodev.moviesandroidkata.R;
-import com.xurxodev.moviesandroidkata.domain.model.Movie;
+import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.presenter.movies.MoviesFragmentPresenter;
 import com.xurxodev.moviesandroidkata.view.imageloader.ImageLoader;
 import com.xurxodev.moviesandroidkata.view.movies.adapter.MoviesAdapter;
 

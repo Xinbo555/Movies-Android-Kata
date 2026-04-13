@@ -1,9 +1,9 @@
-package com.xurxodev.moviesandroidkata.DI;
+package com.xurxodev.moviesandroidkata.model.DI;
 
 import android.content.Context;
 
-import com.xurxodev.moviesandroidkata.view.router.MovieRouter;
-import com.xurxodev.moviesandroidkata.view.router.MovieRouterImpl;
+import com.xurxodev.moviesandroidkata.presenter.router.MovieRouter;
+import com.xurxodev.moviesandroidkata.presenter.router.MovieRouterImpl;
 
 import dagger.Module;
 import dagger.Provides;

@@ -1,9 +1,8 @@
-package com.xurxodev.moviesandroidkata.data.repository;
+package com.xurxodev.moviesandroidkata.model.repository;
 
-import com.xurxodev.moviesandroidkata.data.parser.MovieParser;
-import com.xurxodev.moviesandroidkata.data.source.MoviesLocalDataSource;
-import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
-import com.xurxodev.moviesandroidkata.domain.model.Movie;
+import com.xurxodev.moviesandroidkata.model.parser.MovieParser;
+import com.xurxodev.moviesandroidkata.model.source.local.MoviesLocalDataSource;
+import com.xurxodev.moviesandroidkata.model.data.Movie;
 
 import java.util.List;
 
@@ -22,6 +21,15 @@ public class DiskMovieRepository implements MovieRepository {
 
     @Override
     public List<Movie> getMovies() {
+        simulateDelay();
         return movieParser.fromJson(moviesLocalDataSource.getMoviesJson());
+    }
+
+    private void simulateDelay() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

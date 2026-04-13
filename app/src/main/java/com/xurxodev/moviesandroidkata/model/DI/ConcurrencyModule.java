@@ -1,10 +1,10 @@
-package com.xurxodev.moviesandroidkata.DI;
+package com.xurxodev.moviesandroidkata.model.DI;
 
 import android.os.Handler;
 import android.os.Looper;
 
-import com.xurxodev.moviesandroidkata.data.executor.ThreadAsyncExecutor;
-import com.xurxodev.moviesandroidkata.domain.executor.AsyncExecutor;
+import com.xurxodev.moviesandroidkata.model.executor.ThreadAsyncExecutor;
+import com.xurxodev.moviesandroidkata.model.executor.AsyncExecutor;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
