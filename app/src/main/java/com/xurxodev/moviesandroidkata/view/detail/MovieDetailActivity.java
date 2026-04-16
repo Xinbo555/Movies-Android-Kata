@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.xurxodev.moviesandroidkata.R;
-import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.model.movie.Movie;
 import com.xurxodev.moviesandroidkata.presenter.detail.MovieDetailPresenter;
 import com.xurxodev.moviesandroidkata.view.imageloader.ImageLoader;
 

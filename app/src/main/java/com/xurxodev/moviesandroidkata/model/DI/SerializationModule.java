@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent;
 
 @Module
 @InstallIn(SingletonComponent.class)
-public class NetworkModule {
+public class SerializationModule {
 
     @Provides
     @Singleton

@@ -2,7 +2,7 @@ package com.xurxodev.moviesandroidkata.model.repository;
 
 import com.xurxodev.moviesandroidkata.model.parser.MovieParser;
 import com.xurxodev.moviesandroidkata.model.source.local.MoviesLocalDataSource;
-import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.model.movie.Movie;
 
 import java.util.List;
 

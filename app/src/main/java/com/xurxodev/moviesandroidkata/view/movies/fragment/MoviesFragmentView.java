@@ -1,6 +1,6 @@
 package com.xurxodev.moviesandroidkata.view.movies.fragment;
 
-import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.model.movie.Movie;
 
 import java.util.List;
 

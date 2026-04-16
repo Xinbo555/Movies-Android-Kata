@@ -1,8 +1,9 @@
 package com.xurxodev.moviesandroidkata.model.service;
 
-import com.xurxodev.moviesandroidkata.model.executor.AsyncExecutor;
+import android.os.AsyncTask;
+
 import com.xurxodev.moviesandroidkata.model.repository.MovieRepository;
-import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.model.movie.Movie;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -11,17 +12,25 @@ import javax.inject.Inject;
 
 public class MovieListService {
     private final MovieRepository movieRepository;
-    private final AsyncExecutor asyncExecutor;
     @Inject
-    public MovieListService(MovieRepository movieRepository, AsyncExecutor asyncExecutor) {
+    public MovieListService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
-        this.asyncExecutor = asyncExecutor;
     }
 
     public void getMovies(Consumer<List<Movie>> onMoviesLoaded) {
-        asyncExecutor.doInBackground(() -> {
-            List<Movie> movies = movieRepository.getMovies();
-            asyncExecutor.doOnMainThread(() -> onMoviesLoaded.accept(movies));
-        });
+        AsyncTask<Void, Void, List<Movie>> moviesAsyncTask =
+                new AsyncTask<Void, Void, List<Movie>>() {
+                    @Override
+                    protected List<Movie> doInBackground(Void... params) {
+                        return movieRepository.getMovies();
+                    }
+
+                    @Override
+                    protected void onPostExecute(List<Movie> movies) {
+                        onMoviesLoaded.accept(movies);
+                    }
+                };
+
+        moviesAsyncTask.execute();
     }
 }

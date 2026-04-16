@@ -1,6 +1,6 @@
 package com.xurxodev.moviesandroidkata.presenter.detail;
 
-import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.model.movie.Movie;
 import com.xurxodev.moviesandroidkata.view.detail.MovieDetailView;
 import com.xurxodev.moviesandroidkata.presenter.router.MovieRouter;
 

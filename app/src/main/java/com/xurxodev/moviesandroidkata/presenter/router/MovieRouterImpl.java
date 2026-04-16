@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.xurxodev.moviesandroidkata.model.data.Movie;
+import com.xurxodev.moviesandroidkata.model.movie.Movie;
 import com.xurxodev.moviesandroidkata.view.detail.MovieDetailActivity;
 
 import javax.inject.Inject;
