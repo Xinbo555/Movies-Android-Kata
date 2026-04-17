@@ -1,6 +1,6 @@
 package com.xurxodev.moviesandroidkata.framework.DI;
 
-import com.xurxodev.moviesandroidkata.adapter.repository.DiskMovieRepository;
+import com.xurxodev.moviesandroidkata.adapter.persistence.MovieRepositoryImpl;
 import com.xurxodev.moviesandroidkata.domain.repository.MovieRepository;
 
 import javax.inject.Singleton;
@@ -15,5 +15,5 @@ import dagger.hilt.components.SingletonComponent;
 public abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract MovieRepository bindModuleRepository(DiskMovieRepository impl);
+    abstract MovieRepository bindModuleRepository(MovieRepositoryImpl impl);
 }

@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.adapter.source.local;
+package com.xurxodev.moviesandroidkata.adapter.persistence.source.local;
 
 import android.content.Context;
 

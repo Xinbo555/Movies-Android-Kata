@@ -1,4 +1,4 @@
-package com.xurxodev.moviesandroidkata.adapter.parser;
+package com.xurxodev.moviesandroidkata.adapter.persistence.parser;
 
 import com.google.gson.Gson;
 import com.xurxodev.moviesandroidkata.domain.model.Movie;
